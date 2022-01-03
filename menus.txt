@@ -1,0 +1,9 @@
+Pizza Perfect | Margherita | 79.0
+Pizza Perfect | Miami | 118.0
+Pizza Perfect | BBQ Chicken | 111.0
+Burger Bistro | Standard Burger | 71.51
+Burger Bistro | Speedy Gonzales | 99.5
+Burger Bistro | Marilyn Monroe | 99.5
+Asia House | Beef Chow Mein | 40.0
+Asia House | Pad Mee Prik Phao Gai | 48.0
+Asia House | Sweet & Sour Chicken | 40.0

@@ -1,0 +1,30 @@
+Spike Fenton,Johannesburg,0
+Johan Hoffman,Springbok,1
+Ana Ortega,Port Elizabeth,1
+Eugene Santana,Durban,2
+Kealan Chester,Port Elizabeth,2
+Miranda Metcalfe,Cape Town,4
+Cayson Warner,Cape Town,3
+Jaidan Spencer,Potchefstroom,3
+Karol Dunn,Durban,4
+Aaron Neville,Cape Town,4
+Eshan Gibson,Witbank,4
+Lily Drew,Port Elizabeth,4
+Liya Simons,Springbok,5
+Julie Carty,Cape Town,6
+Kailan Snow,Bloemfontein,6
+Umayr Rawlings,Durban,6
+Adelina Markham,Witbank,7
+Victor Orozco,Potchefstroom,8
+Caitlin Andrade,Witbank,8
+Aya Farrington,Cape Town,9
+Clement Bond,Port Elizabeth,9
+Eisa Wilson,Johannesburg,10
+Blaine Merritt,Springbok,11
+Gemma Paterson,Johannesburg,12
+Abul Ali,Durban,12
+Huma Owens,Witbank,12
+Tyron Bonilla,Johannesburg,14
+Kallum Sadler,Witbank,15
+Kaelan Casey,Bloemfontein,16
+Trevor Rigby,Bloemfontein,27

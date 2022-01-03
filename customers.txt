@@ -1,0 +1,3 @@
+Jane Doe|0635542869|123 North Road, Northside|Durban|jane.doe@gmail.com
+Jack Reacher|0814588762|123 South Road, Southside|Cape Town|jack.reacher@gmail.com
+Benjamin Button|0815542362|28 Young Street, Springview|Witbank|benji@email.com
