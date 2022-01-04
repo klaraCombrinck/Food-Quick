@@ -3,9 +3,9 @@ Johan Hoffman,Springbok,1
 Ana Ortega,Port Elizabeth,1
 Eugene Santana,Durban,2
 Kealan Chester,Port Elizabeth,2
-Miranda Metcalfe,Cape Town,4
 Cayson Warner,Cape Town,3
 Jaidan Spencer,Potchefstroom,3
+Miranda Metcalfe,Cape Town,4
 Karol Dunn,Durban,4
 Aaron Neville,Cape Town,4
 Eshan Gibson,Witbank,4
