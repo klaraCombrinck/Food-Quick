@@ -17,7 +17,11 @@ public class Main {
 		ArrayList<Customer> customerList = Customer.loadCustomerList("customers.txt");
 		ArrayList<Restaurant> restaurantList = Restaurant.loadRestaurantList("restaurants.txt");
 		ArrayList<Menu> menuList = Menu.loadMenuList("menus.txt");
+<<<<<<< HEAD
 		ArrayList<Driver> driverList = Driver.loadDriverList("driver-info.txt");
+=======
+		ArrayList<Driver> driverList = Driver.loadDriverList("drivers-info.txt");
+>>>>>>> master
 		ArrayList<Order> orderList = Order.loadOrderList("orders.txt");
 		ArrayList<OrderItem> orderedItems = OrderItem.loadOrderItemsList("orderedItems.txt");
 		
@@ -32,7 +36,11 @@ public class Main {
 			switch (choice) {
 			
 			case 1: 
+<<<<<<< HEAD
 				addNewOrder(customerList, restaurantList, menuList, driverList, orderList, orderedItems);
+=======
+				addNewOrders(customerList, restaurantList, menuList, driverList, orderList, orderedItems);
+>>>>>>> master
 				break;
 				
 			case 2:
@@ -66,7 +74,11 @@ public class Main {
 	}
 	
 	@SuppressWarnings("unused")
+<<<<<<< HEAD
 	public static void addNewOrder(ArrayList <Customer>customerList, ArrayList<Restaurant> restaurantList, ArrayList<Menu> menuList, ArrayList<Driver> driverList, ArrayList<Order> orderList, ArrayList<OrderItem> orderedItems) {
+=======
+	public static void addNewOrders(ArrayList <Customer>customerList, ArrayList<Restaurant> restaurantList, ArrayList<Menu> menuList, ArrayList<Driver> driverList, ArrayList<Order> orderList, ArrayList<OrderItem> orderedItems) {
+>>>>>>> master
 		
 		// empty starting objects
 		Customer currentCustomer = null;
@@ -129,11 +141,19 @@ public class Main {
 		currentDriver.setDriverLoad(1 + currentDriver.getDriverLoad());
 		
 		// replace old file with new file
+<<<<<<< HEAD
 		File file = new File("driver-info.txt");
 		
 		if (file.delete()) {
 			// create new file
 			File newDriverFile = new File("driver-info.txt");
+=======
+		File file = new File("drivers-info.txt");
+		
+		if (file.delete()) {
+			/* delete old file and create new file */
+			File newDriverFile = new File("drivers-info.txt");
+>>>>>>> master
 		}
 		else {
 			System.out.println("Failed to delete driver file.");
@@ -145,8 +165,13 @@ public class Main {
 		// write new driverList to text file
 		for (Driver driver:driverList) {
 			String newText = driver.toString();
+<<<<<<< HEAD
 			Driver.updateDriverFile("driver-info.txt", newText, true); // true = append
 		}
+=======
+			Driver.updateDriverFile("drivers-info.txt", newText, true); // append
+		}		
+>>>>>>> master
 	
 		// ================================ select restaurant ===================================
 		
