@@ -14,7 +14,7 @@ public class Main {
 		ArrayList<Customer> customerList = Customer.loadCustomerList("customers.txt");
 		ArrayList<Restaurant> restaurantList = Restaurant.loadRestaurantList("restaurants.txt");
 		ArrayList<Menu> menuList = Menu.loadMenuList("menus.txt");
-		ArrayList<Driver> driverList = Driver.loadDriverList("drivers.txt");
+		ArrayList<Driver> driverList = Driver.loadDriverList("drivers-info.txt");
 		ArrayList<Order> orderList = Order.loadOrderList("orders.txt");
 		ArrayList<OrderItem> orderedItems = OrderItem.loadOrderItemsList("orderedItems.txt");
 		
@@ -29,7 +29,7 @@ public class Main {
 			switch (choice) {
 			
 			case 1: 
-				placeOrder(customerList, restaurantList, menuList, driverList, orderList, orderedItems);
+				addNewOrders(customerList, restaurantList, menuList, driverList, orderList, orderedItems);
 				break;
 				
 			case 2:
@@ -63,7 +63,7 @@ public class Main {
 	}
 	
 	@SuppressWarnings("unused")
-	public static void placeOrder(ArrayList <Customer>customerList, ArrayList<Restaurant> restaurantList, ArrayList<Menu> menuList, ArrayList<Driver> driverList, ArrayList<Order> orderList, ArrayList<OrderItem> orderedItems) {
+	public static void addNewOrders(ArrayList <Customer>customerList, ArrayList<Restaurant> restaurantList, ArrayList<Menu> menuList, ArrayList<Driver> driverList, ArrayList<Order> orderList, ArrayList<OrderItem> orderedItems) {
 		
 		// empty starting objects
 		Customer currentCustomer = null;
@@ -120,11 +120,11 @@ public class Main {
 		currentDriver.setDriverLoad(1 + currentDriver.getDriverLoad());
 		
 		// replace old file with new file
-		File file = new File("drivers.txt");
+		File file = new File("drivers-info.txt");
 		
 		if (file.delete()) {
-			// create new file
-			File newDriverFile = new File("drivers.txt");
+			/* delete old file and create new file */
+			File newDriverFile = new File("drivers-info.txt");
 		}
 		else {
 			System.out.println("Failed to delete driver file.");
@@ -132,7 +132,7 @@ public class Main {
 		
 		for (Driver driver:driverList) {
 			String newText = driver.toString();
-			Driver.updateDriverFile("drivers.txt", newText, true); // append
+			Driver.updateDriverFile("drivers-info.txt", newText, true); // append
 		}		
 	
 		// ================================ select restaurant ===================================
