@@ -4,21 +4,28 @@ import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.Scanner;
 
+/* This program models a simple food ordering and delivery app
+ * It allso allows for the addition of restaurants and restaurant items */
+
 public class Main {
 	
 	private static Scanner scanner = new Scanner(System.in);
 	
 	public static void main(String[] args) {
 		
-		// get info from text files at start of program
+		// load info from text files at start of program
 		ArrayList<Customer> customerList = Customer.loadCustomerList("customers.txt");
 		ArrayList<Restaurant> restaurantList = Restaurant.loadRestaurantList("restaurants.txt");
 		ArrayList<Menu> menuList = Menu.loadMenuList("menus.txt");
+<<<<<<< HEAD
+		ArrayList<Driver> driverList = Driver.loadDriverList("driver-info.txt");
+=======
 		ArrayList<Driver> driverList = Driver.loadDriverList("drivers-info.txt");
+>>>>>>> master
 		ArrayList<Order> orderList = Order.loadOrderList("orders.txt");
 		ArrayList<OrderItem> orderedItems = OrderItem.loadOrderItemsList("orderedItems.txt");
 		
-		// ============================== Start ordering process ==============================
+		// ================================= Main Loop ==================================
 		
 		boolean quit = false;
 		
@@ -29,7 +36,11 @@ public class Main {
 			switch (choice) {
 			
 			case 1: 
+<<<<<<< HEAD
+				addNewOrder(customerList, restaurantList, menuList, driverList, orderList, orderedItems);
+=======
 				addNewOrders(customerList, restaurantList, menuList, driverList, orderList, orderedItems);
+>>>>>>> master
 				break;
 				
 			case 2:
@@ -51,7 +62,7 @@ public class Main {
 			}
 		}
 	}
-	 
+
 	public static void printMainMenu() {
 		System.out.println("\n======================== FOOD QUICK MAIN MENU ========================");
 		System.out.println("\n\t1 - Create new Order");
@@ -63,7 +74,11 @@ public class Main {
 	}
 	
 	@SuppressWarnings("unused")
+<<<<<<< HEAD
+	public static void addNewOrder(ArrayList <Customer>customerList, ArrayList<Restaurant> restaurantList, ArrayList<Menu> menuList, ArrayList<Driver> driverList, ArrayList<Order> orderList, ArrayList<OrderItem> orderedItems) {
+=======
 	public static void addNewOrders(ArrayList <Customer>customerList, ArrayList<Restaurant> restaurantList, ArrayList<Menu> menuList, ArrayList<Driver> driverList, ArrayList<Order> orderList, ArrayList<OrderItem> orderedItems) {
+>>>>>>> master
 		
 		// empty starting objects
 		Customer currentCustomer = null;
@@ -81,6 +96,7 @@ public class Main {
 		scanner.nextLine();
 		String contact = scanner.nextLine();
 		
+		// customer contact number is used as an unique ID
 		int i = 0;
 		for (Customer customer: customerList) {
 			if (customer.getContactNumber().equals(contact)) {
@@ -91,17 +107,22 @@ public class Main {
 			}
 		}
 		
-		// in case of unidentified customer
+		// in case of unidentified customer, return to main menu
 		if (i == 0) {
 			System.out.println("\n** Unknown contact number. Please add new customer before placing order. **");
 			return;
 		}
 		
-		// NB identify customer city
-		String currentCity = currentCustomer.getCity();
 		
 		// ============================== check driver availability ============================
 		
+		// identify customer city to check driver availability
+		String currentCity = currentCustomer.getCity();
+		
+		// reload driverList to ensure latest version is used
+		driverList = Driver.loadDriverList("driver-info.txt");
+		
+		// assign driver - drivers-info.txt is sorted with lowest loads first 
 		int x = 0;
 		while (currentDriver == null && x < driverList.size()) {
 			if (currentCity.equals(driverList.get(x).driverCity)) {
@@ -110,7 +131,7 @@ public class Main {
 			x++; // counter
 		}
 		
-		// no drivers available in city
+		// if no drivers available in city, return to main menu
 		if (currentDriver == null) {
 			System.out.println("** Sorry! Our drivers are too far away from you to be able to deliver to your location. **\n\nRedirecting to the main menu...");
 			return;
@@ -120,20 +141,37 @@ public class Main {
 		currentDriver.setDriverLoad(1 + currentDriver.getDriverLoad());
 		
 		// replace old file with new file
+<<<<<<< HEAD
+		File file = new File("driver-info.txt");
+		
+		if (file.delete()) {
+			// create new file
+			File newDriverFile = new File("driver-info.txt");
+=======
 		File file = new File("drivers-info.txt");
 		
 		if (file.delete()) {
 			/* delete old file and create new file */
 			File newDriverFile = new File("drivers-info.txt");
+>>>>>>> master
 		}
 		else {
 			System.out.println("Failed to delete driver file.");
 		} 
 		
+		// update driverList sorting after load has been added - sort smallest load first
+		driverList.sort((value1, value2) -> value1.getDriverLoad().compareTo(value2.getDriverLoad()));
+		
+		// write new driverList to text file
 		for (Driver driver:driverList) {
 			String newText = driver.toString();
+<<<<<<< HEAD
+			Driver.updateDriverFile("driver-info.txt", newText, true); // true = append
+		}
+=======
 			Driver.updateDriverFile("drivers-info.txt", newText, true); // append
 		}		
+>>>>>>> master
 	
 		// ================================ select restaurant ===================================
 		
@@ -157,7 +195,7 @@ public class Main {
 		
 		// =================================== create order =====================================
 		
-		// variable
+		// generate an order ID
 		long orderIndex = 1 + orderList.size();
 		
 		// ask customer to select menu item/s
@@ -198,7 +236,7 @@ public class Main {
 			// update text file
 			OrderItem.writeOrderItemsListToFile("orderedItems.txt", orderedItems);
 			
-			// add another item?
+			// add another item or complete order
 			System.out.println("\nWould you like to add another item to your order? \t\t(enter number)");
 			System.out.println("1 = Yes \n2 = No");
 			
@@ -213,7 +251,7 @@ public class Main {
 		
 		// =============================== special instructions ===============================
 		
-		// default
+		// default message
 		String specialInst = "None";
 		
 		System.out.println("\nWould you like to add any special preparation instructions to your order? \t\t(enter number)");
@@ -230,11 +268,11 @@ public class Main {
 		
 		// ================================ complete order =====================================
 		
-		// update array list
+		// update Order array list
 		currentOrder = new Order(orderIndex, currentCustomer, currentRestaurant, specialInst, currentDriver);
 		orderList.add(currentOrder);
 		
-		// update text file
+		// update Order List text file
 		Order.writeOrderListToFile("orders.txt", orderList);
 		
 		// ================================= generate invoice ========== ========================
@@ -308,7 +346,7 @@ public class Main {
 			return customerList;
 		}
 		
-		//create new Customer object
+		// create new Customer object
 		Customer newCustomer = Customer.createCustomer(newName, newContact, newAddress, newCity, newEmail);
 		
 		// check for duplicates
